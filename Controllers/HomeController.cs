@@ -19,30 +19,30 @@ namespace BookStore1.Controllers
             repo = temp;
         }
 
-        public IActionResult Index(int pageNum = 1) // connects with the view models, gives information to the index view.
+        public IActionResult Index(string category, int pageNum = 1) // connects with the view models, gives information to the index view.
         {
-            int pageSize = 10;
+            int pageSize = 5;
 
             var x = new BooksViewModel
             {
                 Books = repo.Books
+                    .Where(x => x.Category == category || category == null)
                     .OrderBy(k => k.Title)
                     .Skip((pageNum - 1) * pageSize)
                     .Take(pageSize),
+
                 PageInfo = new PageInfo
                 {
-                    TotalNumBooks = repo.Books.Count(),
+                    TotalNumBooks =
+                        (category == null
+                            ? repo.Books.Count()
+                            : repo.Books.Where(x => x.Category == category).Count()),
                     BooksPerPage = pageSize,
                     CurrentPage = pageNum
                 }
             };
 
             return View(x);
-        }
-
-        public IActionResult Cart()
-        {
-            return View();
         }
     }
 }

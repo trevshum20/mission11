@@ -5,43 +5,10 @@
 
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to my Book Store</h1>
-    <br />
 
     @foreach (Books b in Model.Books) // Dynamically displays all the books
     {
-        <section >
-            <div class="container px-1 px-lg-1 mt-1">
-                <div class="row gx-1 gx-lg-1 row-cols-1 row-cols-md-1 row-cols-xl-1">
-                    <div class="col mb-1">
-                        <div class="card h-20">
-                            <!-- Product image-->
-                            <img width="200px;" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder"><i>@b.Title</i>, @b.Author</h5>
-                                    <!-- Product price-->
-                                    $@b.Price<br />
-                                    Publisher: @b.Publisher<br />
-                                    ISBN: @b.Isbn<br />
-                                    Classification: @b.Classification <br />
-                                    Category: @b.Category<br />
-                                    Page Count: @b.PageCount
-
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
+        <partial name="BookSummary" model="b" />
     }
 
 
@@ -51,4 +18,9 @@
 <br />
 @*Dynamically creates the pagination links*@
 <h5>Pages:</h5>
-<div page-blah="@Model.PageInfo" page-action="Index"></div> 
+
+
+
+<div page-blah="@Model.PageInfo" page-action="Index" page-class="btn"
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true"
+     class="btn-group pull-right m-1"></div>
