@@ -2,7 +2,7 @@
 @model BookStore1.Pages.CartModel
 @{
 }
-<h2>Omae No Carto</h2>
+<h2>Your Cart</h2>
 
 <table class="table bordered table-striped">
     <thead>
@@ -22,6 +22,13 @@
                 <td>@i.Quantity</td>
                 <td>@i.Book.Price</td>
                 <td>$@(i.Quantity * i.Book.Price)</td>
+                <td class="text-center">
+                    <form method="post" asp-page-handler="Remove" >
+                        <input type="hidden" name="bookId" value="@i.Book.BookId" />
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
@@ -36,4 +43,5 @@
 
 <div>
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+    <a class="btn btn-primary" asp-controller="Transaction" asp-action="Checkout">Proceed to Checkout</a>
 </div>

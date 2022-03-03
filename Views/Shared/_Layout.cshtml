@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Book Store</title>
+    <link rel="icon" href="https://mediaproxy.salon.com/width/1200/https://media.salon.com/2012/10/Mormon-book2-e1362777636190.jpeg">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -20,6 +21,10 @@
 
         <div class="col-6">
 
+            <div class="row m-1 p-1">
+
+                <vc:cart></vc:cart>
+            </div>
 
             <div>
                 @RenderBody()
