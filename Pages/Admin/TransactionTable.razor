@@ -1,7 +1,7 @@
 ﻿<table class="table table-sm table-striped table-bordered">
     <thead>
         <tr>
-            <th colspan="5" class="text-center">@TableTitle</th>
+            <th colspan="5" style="color: white" class="text-center">@TableTitle</th>
         </tr>
 
     </thead>
@@ -12,10 +12,10 @@
             @foreach (Transaction t in Transactions)
             {
                 <tr>
-                    <td>@t.FirstName @t.LastName</td>
-                    <td>@t.Zip</td>
-                    <th>Book</th>
-                    <th>Quantity</th>
+                    <td style="color: white" >@t.FirstName @t.LastName</td>
+                    <td style="color: white" >@t.Zip</td>
+                    <th style="color: white" >Book</th>
+                    <th style="color: white" >Quantity</th>
 
                     <td>
                         <button class="btn btn-sm btn-danger" @onclick="(x => TransactionSelected.InvokeAsync(t.TransactionId))" >
@@ -30,8 +30,8 @@
                     <tr>
                         
                         <td colspan="2"></td>
-                        <td>@c.Book.Title</td>
-                        <td>@c.Quantity</td>
+                        <td style="color: white" >@c.Book.Title</td>
+                        <td style="color: white" >@c.Quantity</td>
                     </tr>
                 }
             }
@@ -39,7 +39,7 @@
         else
         {
             <tr>
-                <td colspan="5" class="text-center">No Transactions</td>
+                <td colspan="5" class="text-center" style="color: white" >No Transactions</td>
             </tr>
         }
 
